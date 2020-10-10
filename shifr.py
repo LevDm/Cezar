@@ -1,15 +1,20 @@
-r = int(input('Алфавит ввода:\n0 - латинский\n1 - русский\n\n:'))
-if r == 0: ALF = ' abcdefghijklmnopqrstuvwxyz'
-else: ALF = ' абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
-n = int(input('число символов смещения:'))
-S = str(input('текст:').lower()) #ввод строки 
+ho = int(input('Работа:\n0 - расшифровать\n1 - шифровать\n\n: '))
+
+r = int(input('Алфавит ввода:\n0 - латинский\n1 - русский\n\n: '))
+if r == 0: ALF = 'abcdefghijklmnopqrstuvwxyz'
+else: ALF = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
+    
+n = int(input('число символов смещения: '))
+if ho == 0: n = -n
+    
+S = str(input('текст: ').lower()) #ввод строки 
 
 fr = str()
+
 for i in S:
-    fr += ALF[(ALF.index(i) + n) % len(ALF)] #шифрование
+    if i.isalpha() != True: #пропуск не букв
+        fr += i
+        continue 
+    fr += ALF[(ALF.index(i) + n) % len(ALF)] #шифрование-расшифрование
     
-for i in range(len(S)): #пробелы
-    if S[i] == ' ':
-        fr = fr.replace(fr[i],' ')
-    
-print('\nполучено:'+fr)
+print('\nполучено: '+fr)
