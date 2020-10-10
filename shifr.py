@@ -7,7 +7,19 @@ else: ALF = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
 n = int(input('число символов смещения: '))
 if ho == 0: n = -n
     
-S = str(input('текст: ').lower()) #ввод строки 
+go = True
+while go == True: #Ввод строки с проверкой выбраного алфавита
+    S = str(input('текст: ').lower())
+    for i in S:
+        if i.isalpha() != True: continue
+        if ALF.count(i) != 0:
+            go = False
+            continue
+        else:
+            print('символы не соответствуют единому выбранному алфавиту')
+            go = True
+            break
+            
 
 fr = str()
 
